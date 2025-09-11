@@ -13,8 +13,6 @@ await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/lo
   await page.getByRole('listitem').filter({ hasText: 'Job' }).locator('i').click();
   await page.getByRole('menuitem', { name: 'Job Titles' }).click();
 ;
-  
- 
   await page.getByRole('button', { name: ' Add' }).click();
   await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveJobTitle');
   await page.getByText('Add Job TitleJob TitleJob').click();
@@ -27,4 +25,3 @@ await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/lo
   await page.getByText('User Management').click();
 });
 
-  
