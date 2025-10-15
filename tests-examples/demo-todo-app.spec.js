@@ -1,4 +1,4 @@
-// @ts-check
+// @its-check
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
@@ -446,4 +446,5 @@ async function checkTodosInLocalStorage(page, title) {
   return await page.waitForFunction(t => {
     return JSON.parse(localStorage['react-todos']).map(i => i.title).includes(t);
   }, title);
+
 }

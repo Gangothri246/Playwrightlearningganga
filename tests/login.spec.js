@@ -1,86 +1,95 @@
-import { test, expect } from '@playwright/test';
+// import { test, expect } from '@playwright/test';
+// import { Loginpage } from '../pages/loginpage.po.js';
+// import data from  "../testdata/logindata.json"
+// let page 
+// let login
 
-test('Verify Login With Valid Ceredentials', async ({ page }) => {
-
-await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/indexhttps://opensource-demo.orangehrmlive.com/web/index.php/dashboard/indexhttps://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-
-await page.locator("//input[@placeholder='Username']").fill(process.env.APP_USERNAME)
-
-await page.locator("//input[@type='password']").fill(process.env.APP_PASSWORD)
-
-await page.locator("//button[@type='submit']").click
-
-// verify method1
-
-await expect(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/indexhttps://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
-
-//or
-
-await expect(page.locator("//h6[text()='Dashboard']")).toBeVisible()
-
-})
+// test.describe("Verify Login Functionality", async () => {
 
 
+// })
 
+//   test('Verify Launch Url', async () => {
+//     await Login.launchUrl()
+//     await Login.VerifyLogo()
+  
+//   })
+  
+// test('Verify Login With Valid Ceredentials', async () => {
+//     await Login.LoginWithCreds(process.env.APP_USERNAME, process.env.APP_PASSWORD)
+//     await Login.LoginSucess()
+
+//   })
+
+// test('Verify Login With Valid Username and Invalid Password', async () => {
+//     await Login.LoginWithCreds(process.env.APP_USERNAME, data.wrongpassword)
+//     await Login.LoginErrors()
+// })
+
+// test('Verify Login With InvalidUsername and valid Password', async () => {
+//     await Login.LoginWithCreds(data.wrongusername, process.env.APP_PASSWORD)
+//     await Login.LoginErrors()
+// })
+
+// test('Verify Login With InvalidUsername and Invalid Password', async () => {
+//     await Login.LoginWithCreds(data.wrongusername, data.wrongpassword)
+//     await Login.LoginErrors()
+// });
+
+// import { test, expect } from '@playwright/test';
+
+// test('test', async ({ page }) => {
+//   await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+//   await page.getByText('Username : Admin').click();
+//   await page.getByText('Password : admin123').click();
+
+//   await page.getByRole('textbox', { name: 'Username' }).click();
+//   await page.getByRole('textbox', { name: 'Password' }).click();
+//  ;
+ 
+//   await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
 
  
-test('Verify Login Valid Username And Invalid Password', async ({ page }) => {
+//   await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
+  // await page.getByRole('button', { name: 'Login' }).click();
+  // await page.getByRole('link', { name: 'PIM' }).click();
+//   await page.getByRole('listitem').filter({ hasText: 'Add Employee' }).click();
 
-await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+// });
 
-await page.locator("//input[@placeholder='Username']").fill('Admin')
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/loginpage.po.js';
+import data from "../testdata/logindata.json";
 
-await page.locator("//input[@type='password']").fill('ganga')
+test.describe("Verify Login Functionality", () => {
+  let login;
+  
+  test.beforeEach(async ({ page }) => {
+    login = new LoginPage(page);
+    await login.goto();
+  });
 
-await page.locator("//button[@type='submit']").click
+  test('Verify Launch Url', async () => {
+    await login.verifyLogo();
+  });
 
-// verify method1
+  test('Verify Login With Valid Credentials', async () => {
+    await login.loginWithCreds(process.env.APP_USERNAMEG, process.env.APP_PASSWORD);
+    await login.loginSuccess();
+  });
 
-await expect(page.locator("//p[text()='Invalid credentials']")).toBeVisible
+  test('Verify Login With Valid Username and Invalid Password', async () => {
+    await login.loginWithCreds(process.env.APP_USERNAME, data.wrongpassword);
+    await login.loginErrors();
+  });
 
-})
+  test('Verify Login With Invalid Username and Valid Password', async () => {
+    await login.loginWithCreds(data.wrongusername, process.env.APP_PASSWORD);
+    await login.loginErrors();
+  });
 
-
-
-
-
-test('Verify Login Invaild Username And Valid Password', async ({ page }) => {
-
-await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-
-await page.locator("//input[@placeholder='Username']").fill('Ganga')
-
-await page.locator("//input[@type='password']").fill('admin123')
-
-await page.locator("//button[@type='submit']").click()
-
-// verify method1
-
-
-await expect(page.locator("//p[text()='Invalid credentials']")).toBeVisible
-
-
-})
-
-
-test('Verify Login Invaild Username And INValid Password', async ({ page }) => {
-
-await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-
-await page.locator("//input[@placeholder='Username']").fill('Ganga')
-
-await page.locator("//input[@type='password']").fill('4567')
-
-await page.locator("//button[@type='submit']").click()
-
-// verify method1
-
-
-await expect(page.locator("//p[text()='Invalid credentials']")).toBeVisible
-
-
-})
-
-
-
-
+  test('Verify Login With Invalid Username and Invalid Password', async () => {
+    await login.loginWithCreds(data.wrongusername, data.wrongpassword);
+    await login.loginErrors();
+  });
+});
