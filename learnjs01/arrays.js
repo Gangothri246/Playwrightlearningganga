@@ -49,3 +49,96 @@ console.log(element)
 console.log("loop Ends")
 
 });
+
+//push 
+jobtitles.push("SDET2")
+console.log(jobtitles)
+//pop
+jobtitles.pop()
+console.log(jobtitles)
+//shift
+jobtitles.shift()
+console.log(jobtitles)
+//push
+ganga = ["netra","gayi"];
+ganga.push("baby");
+console.log(ganga)
+//pop
+ganga.pop()
+console.log(ganga)
+//shift
+ganga.shift()
+console.log(ganga)
+//unshift
+ganga.unshift("netra","baby")
+console.log(ganga)
+//splice
+ganga.splice(2,7,"yash")
+console.log(ganga)
+ganga.splice(1,1)
+console.log(ganga)
+//map
+const numbers = [1,2,3,4,5];
+const double =numbers.map((num) => num * 2);
+console.log(double);
+
+
+const number =[ 1,3,4,6];
+const square =number.map((num) =>  num * num);
+console.log(square);
+
+
+const num =[2,4,6,8];
+const add =num.map((num) => num + 2);
+console.log(add);
+
+const numb =[2,4,6,8];
+const sub =num.map((num) => num - 2);
+console.log(sub);
+
+
+const data =[2,4,6,8];
+const div =num.map((num) => num / 2);
+console.log(div);
+//filter
+const num1 = [1,2,3,4,5,,6,7,8]
+const even = num1.filter((n) => n % 2 === 0);
+console.log(even);
+ const odd = num1.filter((n) => n % 2 !== 0);
+ console.log(odd);
+const greaterthan3 = num1.filter((n) => n > 3);
+console.log(greaterthan3) 
+
+const lesserthan3 = num1.filter((n) => n < 3);
+console.log(lesserthan3)
+ 
+//push
+const gangu = ["netra","gayi"];
+gangu.push("ammu");
+console.log(gangu)
+ gangu.pop("ammu");
+ console.log (gangu)
+ gangu.shift("gayi");
+ console.log(gangu)
+ gangu.unshift("netra");
+ console.log(gangu)
+gangu.splice(1,0,"netra");
+
+console.log(gangu)
+const numb2 = [1,2,3,4,5,6,];
+const divide = numb2.map((n) => n /2);
+console.log(divide);
+const num2 = [1,2,3,4,5,6];
+console.square = num2.map((n) => num * num);
+
+console.log(square);
+
+const num3 = [1,2,6,5,8,4];
+const odd2 = num3.filter((n) => n %!2== 0);
+console.log(odd2);
+const even2 = num3.filter((n) => n % 2=== 0)
+console.log(even2);
+
+const num4 = [2,3,4,5,6,8];
+const sum = num4.reduce((n) => n + n);
+console.log(sum);
