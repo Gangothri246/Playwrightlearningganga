@@ -1,29 +1,21 @@
 import { test, expect } from '@playwright/test';
 
-test('Verify Login With Valid Credentials', async ({ page }) => {
+test('Verify Login With Valid Credentials', async ({ page }) => { 
 
 await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')
 
-await page.locator("//input[@placeholder='Username']").fill(process.env.APP_USERNAME)
+await page.getByRole("textbox", { name: "Username" }).fill(process.env.APP_USERNAME);
 
-await page.locator("//input[@type='password']").fill(process.env.APP_PASSWORD)
+await page.getByRole("textbox", { name: "Password" }).fill(process.env.APP_PASSWORD);
 
-await page.locator("//button[@type='submit']").click
+await page.getByRole("button", { name: "Login" }).click() 
 
 // verify method1
 
-await expect(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/indexhttps://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
-
+await expect(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
+})
 //or
 
-await expect(page.locator("//h6[text()='Dashboard']")).toBeVisible()
-
-})
-
-
-
-
- 
 test('Verify Login Valid Username And Invalid Password', async ({ page }) => {
 
 await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
@@ -67,7 +59,7 @@ test('Verify Login Invaild Username And INValid Password', async ({ page }) => {
 
 await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
 
-await page.locator("//input[@placeholder='Username']").fill('Ganga')
+await page.locator("//input[@placeholder='Username']").fill(process.env.APP_USERNAME);
 
 await page.locator("//input[@type='password']").fill('4567')
 

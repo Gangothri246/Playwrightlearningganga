@@ -3,12 +3,12 @@ import { test, expect } from '@playwright/test';
 test('verify add employee', async ({ page }) => {
 
   await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-  await page.locator("//input[@placeholder='Username']").fill('Admin')
-  await page.locator("//input[@type='password']").fill('admin123')
+  await page.locator("//input[@placeholder='Username']").fill(process.env.APP_USERNAME)
+  await page.locator("//input[@type='password']").fill(process.env.APP_PASSWORD)
   await page.locator("//button[@type='submit']").click()
   await page.locator("//li[contains(.,'PIM')]").click()
 
-  await expect(page.locator("div#app>div>div>header")).toBeVisible
+  await expect(page.locator("div#app>div>div>header")).toBeVisible()
   await page.locator("//li[contains(.,'Add Employee')]").click()
 
   await page.locator("//input[@placeholder='First Name']").fill('Ganga')
