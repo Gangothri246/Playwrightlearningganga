@@ -4,7 +4,7 @@ test('Verify Login With Valid Ceredentials', async ({ page }) => {
 
 await page.goto('https://rahulshettyacademy.com/AutomationPractice/')
 
-await expect(page.locator('checkBoxOption1')).not.toBeChecked()
+await expect(page.locator('checkBoxOption1')).toBeChecked()
 const checkboxesstatus = await page.locator('checkBoxOption1').isChecked()
 
 if(checkboxesstatus){
